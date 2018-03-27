@@ -1,9 +1,9 @@
 # copyjd
 
 >  <a href="https://machiming.github.io/dist/index.html#/">查看效果</a>
-   <img src="static/down.png"/><br>
+   <img src="static/down.png" style="margin:0 auto"/><br>
    <br>
-    ![QRCode](static/down.png)
+   
 ## Build Setup
 
 ``` bash
