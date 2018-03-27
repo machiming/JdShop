@@ -4,7 +4,7 @@
       <li v-for="item in boxnav">
         <span class="title">{{item.title}}</span>
         <span class="des">{{item.des}}</span>
-        <img :src="'../static/boxnav/'+item.img"/>
+        <img :src="'static/boxnav/'+item.img"/>
       </li>
     </ul>
   </div>

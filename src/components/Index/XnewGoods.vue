@@ -8,7 +8,7 @@
        <div class="more">
          <div class="moreTitle">京选轮番秒</div>
          <span>
-           <img :src="'../static/'+more"/>
+           <img :src="'static/'+more"/>
          </span>
        </div>
     </div>
@@ -16,7 +16,7 @@
         <ul>
           <li v-for="item in goodslist">
              <div>
-               <img :src="'../static/goods/'+item.img"/>
+               <img :src="'static/goods/'+item.img"/>
                <span class="price">￥{{item.pricenew}}</span>
                <span class="pricenew" style="text-decoration: line-through">￥{{item.price}}</span>
              </div>

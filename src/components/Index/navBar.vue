@@ -3,7 +3,7 @@
     <div class="bg"><img :src="bg"/></div>
     <ul>
       <li v-for="item in navBox">
-        <img :src="'../static/nav/'+item.img">
+        <img :src="'static/nav/'+item.img">
         <span>{{item.title}}</span>
       </li>
     </ul>
@@ -27,7 +27,7 @@
                {"title":"赚钱","img":"navs (7).png"},
                {"title":"物流查询","img":"navs (8).png"},
              ],
-            bg:'../static/5ab769eeN6bbaa30d.jpg'
+            bg:'static/5ab769eeN6bbaa30d.jpg'
           }
         }
     }

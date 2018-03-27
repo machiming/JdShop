@@ -9,7 +9,7 @@
     name: "news2",
     data(){
       return{
-        newspic2:'../static/new/5ab4da6aNdf8a555d.gif'
+        newspic2:'static/new/5ab4da6aNdf8a555d.gif'
       }
     }
   }

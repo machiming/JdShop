@@ -9,7 +9,7 @@
         name: "news",
         data(){
           return{
-              newspic:'../static/5aa903f1Nb5500948.png!q70.jpg'
+              newspic:'static/5aa903f1Nb5500948.png!q70.jpg'
           }
        }
     }
