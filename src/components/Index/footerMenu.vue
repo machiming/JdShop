@@ -1,11 +1,16 @@
 <template>
-<div class="footerB">
-  <ul>
-    <li v-for="site in box">
-      <router-link v-bind:to="site.url"></router-link>
-    </li>
-  </ul>
-</div>
+ <div>
+   <div>
+     <router-view />
+   </div>
+   <div class="footerB">
+     <ul>
+       <li v-for="site in box" @click="selectP(site)" :class="{'hover':site.hover===true}">
+         <router-link v-bind:to="site.url" ></router-link>
+       </li>
+     </ul>
+   </div>
+ </div>
 </template>
 
 <script>
@@ -14,14 +19,26 @@
         data() {
           return{
             box: [
-              { name: '首页',avtar:'./assets/footer/5aa10cd2N46f18ce6.png',"url":"/" },
-              { name: '分类',avtar:'../../assets/footer/kind.png',"url":"/kind"},
-              { name: '发现',avtar:'../../assets/footer/find.png' ,"url":"/find"},
-              { name: '购物车',avtar:'../../assets/cart.png',"url":"/cart" },
-              { name: '我的',avtar:'../../assets/footer/my.png' ,"url":"/my"}
+              { name: '首页',avtar:'./assets/footer/5aa10cd2N46f18ce6.png',"url":"/","hover":true },
+              { name: '分类',avtar:'../../assets/footer/kind.png',"url":"/kind","hover":false},
+              { name: '发现',avtar:'../../assets/footer/find.png' ,"url":"/find","hover":false},
+              { name: '购物车',avtar:'../../assets/cart.png',"url":"/cart" ,"hover":false},
+              { name: '我的',avtar:'../../assets/footer/my.png' ,"url":"/my","hover":false},
             ]
           }
-      }
+      },
+        methods:{
+          selectP(site){
+
+            this.box.forEach((value, index) => {
+              value.hover = false
+            });
+            site.hover = true;
+          }
+        },
+        mounted(){
+
+        }
     }
 </script>
 
@@ -60,9 +77,15 @@
       height: 100%;
     }
   }
-  .footerB ul li:nth-child(1){background: url("../../assets/footer/home-hover.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(1){background: url("../../assets/footer/home.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(2){background: url("../../assets/footer/kind.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(3){background: url("../../assets/footer/find.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(4){background: url("../../assets/footer/cart.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(5){background: url("../../assets/footer/my.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(1).hover{background: url("../../assets/footer/home-hover.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(2).hover{background: url("../../assets/footer/kind-hover.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(3).hover{background: url("../../assets/footer/find.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(4).hover{background: url("../../assets/footer/cart.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(5).hover{background: url("../../assets/footer/my-hover.png")no-repeat center center;background-size:auto 100%}
+
 </style>

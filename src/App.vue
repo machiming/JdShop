@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <hello-world></hello-world>
-    <footer-menu></footer-menu>
+  <!--  <hello-world></hello-world>
+    <footer-menu></footer-menu>-->
+    <router-view />
   </div>
 </template>
 <script>
-import HelloWorld from "./components/HelloWorld";
-import FooterMenu from "./components/Index/footerMenu";
+/*import HelloWorld from "./components/HelloWorld";
+import FooterMenu from "./components/Index/footerMenu";*/
 export default {
-  components: {
+ /* components: {
     HelloWorld,
 
     FooterMenu,
-  },
+  },*/
   name: 'App'
 }
 </script>

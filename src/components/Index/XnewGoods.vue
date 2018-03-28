@@ -70,11 +70,11 @@
       },
        mounted(){
          this.getD();
-         this.$http.get('http://www.machiming.top/phone/index/13127168311').then(response => {
+        /* this.$http.get('http://www.machiming.top/phone/index/13127168311').then(response => {
            console.log(response);
          }, response => {
            console.log(response)
-         })
+         })*/
        },
 
     }

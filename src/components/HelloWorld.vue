@@ -7,6 +7,7 @@
     <xnew-goods></xnew-goods>
     <news2></news2>
     <boxnav></boxnav>
+    <router-view />
   </div>
 </template>
 
