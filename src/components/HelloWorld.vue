@@ -1,11 +1,35 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <search-bar></search-bar>
+    <banner-nav></banner-nav>
+    <nav-bar></nav-bar>
+    <news></news>
+    <xnew-goods></xnew-goods>
+    <news2></news2>
+    <boxnav></boxnav>
   </div>
 </template>
 
 <script>
+  import xnew from '@/components/Index/XnewGoods'
+  import SearchBar from "./Index/SearchBar";
+  import NavBar from "./Index/navBar";
+  import News from "./Index/News";
+  import XnewGoods from "./Index/XnewGoods";
+  import News2 from "./Index/news2";
+  import Boxnav from "./Index/boxnav";
+  import BannerNav from "./Index/bannerNav";
 export default {
+    components:{
+      BannerNav,
+      Boxnav,
+      News2,
+      XnewGoods,
+      News,
+      NavBar,
+      SearchBar,
+      xnew
+    },
   name: 'HelloWorld',
   data () {
     return {

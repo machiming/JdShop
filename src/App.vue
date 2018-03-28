@@ -1,41 +1,18 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png">-->
-    <!--  <router-view name="HelloWorld"></router-view>-->
-    <!--<router-view name="SearchBar"></router-view>-->
-    <search-bar></search-bar>
-    <banner-nav></banner-nav>
-    <nav-bar></nav-bar>
-    <news></news>
-    <xnew-goods></xnew-goods>
-    <news2></news2>
-    <boxnav></boxnav>
+    <hello-world></hello-world>
     <footer-menu></footer-menu>
-    <!--<router-view name="footerMenu"></router-view>-->
-
   </div>
 </template>
-
 <script>
-import BannerNav from "./components/Index/bannerNav";
-import NavBar from "./components/Index/navBar";
-import SearchBar from "./components/Index/SearchBar";
+import HelloWorld from "./components/HelloWorld";
 import FooterMenu from "./components/Index/footerMenu";
-import News from "./components/Index/News";
-import XnewGoods from "./components/Index/XnewGoods";
-import News2 from "./components/Index/news2";
-import Boxnav from "./components/Index/boxnav";
-
 export default {
   components: {
-    Boxnav,
-    News2,
-    XnewGoods,
-    News,
+    HelloWorld,
+
     FooterMenu,
-    SearchBar,
-    NavBar,
-    BannerNav},
+  },
   name: 'App'
 }
 </script>
