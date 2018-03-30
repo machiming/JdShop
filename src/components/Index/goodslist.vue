@@ -6,7 +6,7 @@
         </span>
       </div>
         <ul class="goodsctx">
-          <li v-for="item in goodsitem" class="goodsitem">
+          <li v-for="item in goodsitem" class="goodsitem" @click="good(item)">
             <div class="goodsimg">
               <img :src="item.img"/>
             </div>
@@ -15,7 +15,7 @@
             </div>
             <div class="goodsprice">
                <p>￥{{item.price}}</p>
-                 <div class="cart">
+                 <div class="cart" @click="select(item.id)">
                        <img src="../../assets/carticon.png"/>
                  </div>
             </div>
@@ -23,7 +23,6 @@
         </ul>
     </div>
 </template>
-
 <script>
     export default {
         name: "goodslist",
@@ -31,21 +30,29 @@
           return {
              goodsitem:[
                {"id":1,"title":"十大萨达啥事萨达十大萨达啥事萨达十大萨达啥事萨达","img":"static/goodslist/goodslist (2).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (3).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (4).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (5).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (6).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (7).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (8).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (9).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (10).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (11).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (12).jpg","price":199},
-               {"id":1,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (13).jpg","price":199},
+               {"id":2,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (3).jpg","price":199},
+               {"id":3,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (4).jpg","price":199},
+               {"id":4,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (5).jpg","price":199},
+               {"id":5,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (6).jpg","price":199},
+               {"id":6,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (7).jpg","price":199},
+               {"id":7,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (8).jpg","price":199},
+               {"id":8,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (9).jpg","price":199},
+               {"id":9,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (10).jpg","price":199},
+               {"id":10,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (11).jpg","price":199},
+               {"id":11,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (12).jpg","price":199},
+               {"id":12,"title":"十大萨达啥事萨达","img":"static/goodslist/goodslist (13).jpg","price":199},
              ],
              cart: ''
           }
+        },
+      methods:{
+        good(obj){
+          alert(obj.title+"\n"+obj.price)
+        },
+        select(obj){
+          console.log(obj)
         }
+      }
     }
 </script>
 
