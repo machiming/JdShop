@@ -3,6 +3,7 @@
   <!--  <hello-world></hello-world>
     <footer-menu></footer-menu>-->
     <router-view />
+    <div style="height: 4rem"></div>
   </div>
 </template>
 <script>
@@ -36,8 +37,6 @@ body{
   margin: 0 auto 0;
   max-width: 640px;
   width: 100%;
-  height: 2000px;
-
 }
   #app ::-webkit-scrollbar {display:none}
   body ::-webkit-scrollbar {display:none}

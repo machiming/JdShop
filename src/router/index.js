@@ -1,65 +1,64 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import footerMenu from '@/components/Index/footerMenu'
-import XnewGoods from '@/components/Index/XnewGoods'
-import boxnav from '@/components/Index/boxnav'
+import Vue from 'vue';
+import Router from 'vue-router';
+import HelloWorld from '@/components/HelloWorld';
+import footerMenu from '@/components/Index/footerMenu';
+import XnewGoods from '@/components/Index/XnewGoods';
+import boxnav from '@/components/Index/boxnav';
 import SearchBar from '@/components/Index/SearchBar';
+import searchbox from '@/components/Index/searchbox';
+import good from '@/components/Index/good';
 
 Vue.use(Router);
-
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'footerMenu',
-      component: footerMenu,
+      component:footerMenu,
       children:[
         {
           path:"/",
-          name:"/HelloWorld",
           component: HelloWorld
         },
         {
           path:"/kind",
-          name:"/HelloWorld",
-          component: HelloWorld
+          component:good
         },
         {
           path:"/find",
-          name:"/XnewGoods",
           component: XnewGoods
         },
         {
           path:"/cart",
-          name:"/HelloWorld",
           component: HelloWorld
         },
         {
           path:"/my",
-          name:"/boxnav",
           component: boxnav
         }
         ]
     },
     {
       path: '/footer',
-      name: 'footerMenu',
       component: footerMenu,
       children:[
         {
           path:"/index",
-          name:"/HelloWorld",
           component: HelloWorld
         },
 
       ]
     },
     {
-      path:"/search",
-      name:"search",
-      component:SearchBar
+      path: '/search',
+      component: SearchBar,
+      children:[
+        {
+          path:'/',
+          name: 'search',
+          component:searchbox
+        }
+      ]
     }
-
   ]
 })

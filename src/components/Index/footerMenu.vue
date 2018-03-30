@@ -5,7 +5,7 @@
    </div>
    <div class="footerB">
      <ul>
-       <li v-for="site in box" @click="selectP(site)" :class="{'hover':site.hover===true}">
+       <li v-for="site in box" @click="selectP(site)" :class="{hover:site.hover}">
          <router-link v-bind:to="site.url" ></router-link>
        </li>
      </ul>
@@ -29,7 +29,6 @@
       },
         methods:{
           selectP(site){
-
             this.box.forEach((value, index) => {
               value.hover = false
             });
@@ -84,8 +83,8 @@
   .footerB ul li:nth-child(5){background: url("../../assets/footer/my.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(1).hover{background: url("../../assets/footer/home-hover.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(2).hover{background: url("../../assets/footer/kind-hover.png")no-repeat center center;background-size:auto 100%}
-  .footerB ul li:nth-child(3).hover{background: url("../../assets/footer/find.png")no-repeat center center;background-size:auto 100%}
-  .footerB ul li:nth-child(4).hover{background: url("../../assets/footer/cart.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(3).hover{background: url("../../assets/footer/find-hover.png")no-repeat center center;background-size:auto 100%}
+  .footerB ul li:nth-child(4).hover{background: url("../../assets/footer/cart-hover.png")no-repeat center center;background-size:auto 100%}
   .footerB ul li:nth-child(5).hover{background: url("../../assets/footer/my-hover.png")no-repeat center center;background-size:auto 100%}
 
 </style>

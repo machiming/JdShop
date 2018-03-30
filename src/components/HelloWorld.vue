@@ -8,6 +8,7 @@
     <news2></news2>
     <boxnav></boxnav>
     <router-view />
+    <goodslist></goodslist>
   </div>
 </template>
 
@@ -20,8 +21,10 @@
   import News2 from "./Index/news2";
   import Boxnav from "./Index/boxnav";
   import BannerNav from "./Index/bannerNav";
+  import Goodslist from "./Index/goodslist";
 export default {
     components:{
+      Goodslist,
       BannerNav,
       Boxnav,
       News2,

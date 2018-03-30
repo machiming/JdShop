@@ -9,9 +9,9 @@
               <span class="span1"></span>
               <span class="span2"></span>
             </div>
-            <input placeholder="领券满199减100" @click="search"/>
+            <input placeholder="领券满199减198" @click="search"/>
           </div>
-          <div class="searchRt" @click="logorback(m)">{{deal}}</div>
+          <div class="searchRt">{{deal}}</div>
         </div>
       </div>
     </div>
@@ -45,12 +45,8 @@
       search(){
         this.$router.push({name:"search",params:{"userId":"1","deal":"返回"}})
       },
-      logorback(obj){
-        if(obj==0){
-          alert("登录")
-        }else {
+      logorback(){
           this.$router.go(-1)
-        }
       }
     },
     mounted () {
