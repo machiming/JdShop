@@ -7,6 +7,8 @@ import boxnav from '@/components/Index/boxnav';
 import SearchBar from '@/components/Index/SearchBar';
 import searchbox from '@/components/Index/searchbox';
 import good from '@/components/Index/good';
+import goodsDetail from '@/components/goods/goodsDetail';
+import goodsSubDetail from '@/components/goods/goodsSubDetail';
 
 Vue.use(Router);
 export default new Router({
@@ -56,6 +58,25 @@ export default new Router({
         {
           path:'/',
           name: 'search',
+          component:searchbox
+        }
+      ]
+    },
+    {
+      path:"/detail",
+      name:"detail",
+      component:goodsDetail,
+      children:[{
+        path:"/",
+        component:goodsSubDetail
+      },
+        {
+          path:"/detail2",
+          name:"detail2",
+          component:searchbox
+        },
+        {
+          path:"/common",
           component:searchbox
         }
       ]
