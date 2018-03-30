@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 import footerMenu from '@/components/Index/footerMenu'
 import XnewGoods from '@/components/Index/XnewGoods'
 import boxnav from '@/components/Index/boxnav'
+import SearchBar from '@/components/Index/SearchBar';
+
 Vue.use(Router);
 
 export default new Router({
@@ -53,6 +55,11 @@ export default new Router({
 
       ]
     },
+    {
+      path:"/search",
+      name:"search",
+      component:SearchBar
+    }
 
   ]
 })
