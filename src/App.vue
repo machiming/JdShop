@@ -31,7 +31,10 @@ body{
 a{
   text-decoration: none;
   color: black;
+  -webkit-tap-highlight-color:transparent;
 }
+  input[type='text'], textarea{-webkit-appearance: none;}
+  html,body{-webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

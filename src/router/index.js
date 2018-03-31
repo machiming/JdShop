@@ -9,6 +9,7 @@ import searchbox from '@/components/Index/searchbox';
 import good from '@/components/Index/good';
 import goodsDetail from '@/components/goods/goodsDetail';
 import goodsSubDetail from '@/components/goods/goodsSubDetail';
+import cart from '@/components/cart/cart';
 
 Vue.use(Router);
 export default new Router({
@@ -32,7 +33,7 @@ export default new Router({
         },
         {
           path:"/cart",
-          component: HelloWorld
+          component: cart
         },
         {
           path:"/my",

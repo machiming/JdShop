@@ -33,13 +33,18 @@
     },
     methods:{
       handleScroll () {
-        var scrollTop = window.pageYOffset||document.documentElement.scrollTop || document.body.scrollTop
-        if(scrollTop>48){
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if(this.$route.params.deal!=undefined){
           this.red = true;
+        }else {
+          if(scrollTop>48){
+            this.red = true;
+          }
+          else {
+            this.red = false;
+          }
         }
-        else {
-          this.red = false;
-        }
+
         /* console.log()*/
       },
       search(){
@@ -54,6 +59,9 @@
       }
     },
     mounted () {
+      if(this.$route.params.deal!=undefined){
+        this.red = true;
+      }
       window.addEventListener('scroll', this.handleScroll)
     },
   }

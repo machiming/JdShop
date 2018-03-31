@@ -73,10 +73,10 @@
           &:before{
             content: "";
             height: 1px;
-            width: 100%;
+            width: 94%;
             position: absolute;
             top: 50%;
-            left: 0;
+            left: 3%;
             background-color: #cbcbcb;
             z-index: 1;
           }
