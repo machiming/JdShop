@@ -1,5 +1,5 @@
 <template>
-     <div class="cart">
+     <div class="cart" id="cart">
         <div class="topNav">
            <div class="title">购物车</div>
            <div class="deal">
@@ -79,13 +79,13 @@
           </div>-->
           <div class="shops" v-for="items in cart">
             <div class="shopdetail">
-              <div class="slt"><input type="checkbox"/></div>
+              <div class="slt"><input type="checkbox" :checked="items.isCheckedAll"  @click="sltall(items)"/></div>
               <div class="title">{{items.shopname}}</div>
               <div class="coupon">优惠券</div>
             </div>
             <div class="goodslist">
               <div class="goodsdetail" v-for="item in items.goods">
-                <div class="slt"><input type="checkbox"/></div>
+                <div class="slt"><input type="checkbox" :checked="selects.indexOf(item.id)>=0"  @click="check(item.id)"/></div>
                 <div class="good">
                   <div class="left">
                     <div><img :src="item.img"/></div>
@@ -96,9 +96,9 @@
                     <div class="bottom">
                       <div class="price">￥{{item.price}}</div>
                       <div class="chooseBox">
-                        <button class="del">-</button>
-                        <input type="text" value="1"/>
-                        <button class="add">+</button>
+                        <button class="del" @click="item.count>0?item.count--:0" :class="{zero:item.count==0}">-</button>
+                        <input type="text" v-model="item.count" @blur="item.count=item.count==''||undefined?0:item.count"/>
+                        <button class="add" @click="item.count++">+</button>
                       </div>
                     </div>
                   </div>
@@ -123,32 +123,66 @@
          </div>
      </div>
 </template>
-
 <script>
     export default {
         name: "cart",
         data(){
           return{
             cart:[
-              {"id":1,"shopname":"京东自营店铺",
+              {"id":11,"shopname":"京东自营店铺",isCheckedAll:false,
                 goods:[
-                  {"name":"这是个什么东西我也不知道","type":"不好吃的口味","price":199,"img":"static/goods/5a2df7f6Ne8b28453.jpg!q70.jpg"},
+                  {"id":1,"name":"这是个什么东西我也不知道","type":"不好吃的口味","price":199,"img":"static/goods/5a2df7f6Ne8b28453.jpg!q70.jpg","count":7},
                   ]
               },
-              {"id":2,"shopname":"京东自营店铺2",
+              {"id":21,"shopname":"京东自营店铺2",isCheckedAll:false,
                 goods:[
-                  {"name":"一个名字很长啊实打实的产品","type":"不知道是啥","price":199,"img":"static/goods/5a6ef6a4Nc6c37bf2.jpg!q70.jpg"},
-                  {"name":"这是个什也不知道","type":"可能没有规格吧","price":199,"img":"static/goods/5a9ca2f4N67518f48.jpg!q70.jpg"},
-                  {"name":"西我也不知道","type":"极速这样","price":199,"img":"static/goods/5aa783aeN9df05256.jpg!q70.jpg"},
+                  {"id":2,"name":"一个名字很长啊实打实的产品","type":"不知道是啥","price":199,"img":"static/goods/5a6ef6a4Nc6c37bf2.jpg!q70.jpg","count":3},
+                  {"id":3,"name":"这是个什也不知道","type":"可能没有规格吧","price":199,"img":"static/goods/5a9ca2f4N67518f48.jpg!q70.jpg","count":5},
+                  {"id":4,"name":"西我也不知道","type":"极速这样","price":199,"img":"static/goods/5aa783aeN9df05256.jpg!q70.jpg","count":2},
                 ]
               }
-            ]
+            ],
+            selects:[],
+            isCheckedAll:false
           }
-        }
+        },
+      methods:{
+          check(obj){
+            let idIndex = this.selects.indexOf(obj);
+            console.log(idIndex);
+            if(idIndex<0){
+              this.selects.push(obj)
+            }else {
+              this.selects.splice(idIndex,1)
+            }
+            console.log(this.selects)
+          },
+         sltall(obj){
+           obj.isCheckedAll = !obj.isCheckedAll;
+           if(!obj.isCheckedAll){
+             obj.goods.forEach(value=>{
+               let idIndex = this.selects.indexOf(value.id);
+               if(idIndex>-1){
+                 this.selects.splice(idIndex,1)
+               }
+             })
+           }else {
+             obj.goods.forEach(value=>{
+               let idIndex = this.selects.indexOf(value.id);
+               if(idIndex<0){
+                 this.selects.push(value.id)
+               }
+             })
+           }
+           console.log(this.selects)
+         }
+      }
     }
 </script>
-
 <style scoped lang="scss">
+  #cart .zero{
+    background: rgba(212,212,212,0.3);
+  }
   .cart{
     background: #f0f2f4;
     width: 100%;
@@ -181,6 +215,7 @@
     .shops{
       width: 100%;
       margin-top: 0.5rem;
+      border-bottom: 1px solid rgba(212,212,212,0.5);
       .shopdetail{
         width: 100%;
         height: 3.5rem;
@@ -188,6 +223,8 @@
         line-height: 3.5rem;
         display: flex;
         justify-content: space-between;
+        border-bottom: 1px solid rgba(212,212,212,0.5);
+        border-top: 1px solid rgba(212,212,212,0.5);
         .slt{
            width: 15%;
         }

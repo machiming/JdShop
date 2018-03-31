@@ -33,7 +33,11 @@ a{
   color: black;
   -webkit-tap-highlight-color:transparent;
 }
-  input[type='text'], textarea{-webkit-appearance: none;}
+
+  input[type='text'], textarea{
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
   html,body{-webkit-text-size-adjust: 100%;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
