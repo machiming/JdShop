@@ -77,7 +77,37 @@
               </div>
             </div>
           </div>-->
-          <div class="shops" v-for="items in cart">
+          <div class="shops">
+            <div class="shopdetail">
+              <div class="slt"><input type="checkbox"/></div>
+              <div class="title">京东自营店</div>
+              <div class="coupon">优惠券</div>
+            </div>
+            <div class="goodslist">
+            <div class="goodsdetail" v-for="item in cartList">
+              <div class="slt"><input type="checkbox" :checked="selects.indexOf(item.id)>=0"  @click="check(item.id)"/></div>
+              <div class="good">
+                <div class="left">
+                  <div><img :src="item.img"/></div>
+                </div>
+                <div class="right">
+                  <div class="title">{{item.title}}</div>
+                  <div class="type">口味：<span>{{item.des}}</span></div>
+                  <div class="bottom">
+                    <div class="price">￥{{item.price}}</div>
+                    <div class="chooseBox">
+                      <button class="del" @click="$store.commit('del', item)" :class="{zero:item.count==0}">-</button>
+                      <input  type="text" v-model="item.count" @blur="item.count=item.count==''||undefined?0:item.count"/>
+                      <button class="add" @click="addToCart(item)" >+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+         <!-- <div class="shops" v-for="items in cart">
             <div class="shopdetail">
               <div class="slt"><input type="checkbox" :checked="items.isCheckedAll"  @click="sltall(items)"/></div>
               <div class="title">{{items.shopname}}</div>
@@ -96,7 +126,7 @@
                     <div class="bottom">
                       <div class="price">￥{{item.price}}</div>
                       <div class="chooseBox">
-                        <button class="del" @click="item.count>0?item.count--:0" :class="{zero:item.count==0}">-</button>
+                        <button class="del" @click="item.count>0?item.count&#45;&#45;:0" :class="{zero:item.count==0}">-</button>
                         <input type="text" v-model="item.count" @blur="item.count=item.count==''||undefined?0:item.count"/>
                         <button class="add" @click="item.count++">+</button>
                       </div>
@@ -106,7 +136,7 @@
               </div>
 
             </div>
-          </div>
+          </div>-->
         </div>
        <div style="height: 4rem"></div>
         <div class="alls">
@@ -117,18 +147,19 @@
             全选
           </div>
            <div class="moneys">
-             合计：￥<span>199.00</span>
+             合计：￥<span>{{totalPrice}}</span>
            </div>
            <div class="go">去结算(6)</div>
          </div>
      </div>
 </template>
 <script>
+  import {mapGetters,mapActions} from 'vuex'
     export default {
         name: "cart",
         data(){
           return{
-            cart:[
+          /*  cart:[
               {"id":11,"shopname":"京东自营店铺",isCheckedAll:false,
                 goods:[
                   {"id":1,"name":"这是个什么东西我也不知道","type":"不好吃的口味","price":199,"img":"static/goods/5a2df7f6Ne8b28453.jpg!q70.jpg","count":7},
@@ -141,12 +172,14 @@
                   {"id":4,"name":"西我也不知道","type":"极速这样","price":199,"img":"static/goods/5aa783aeN9df05256.jpg!q70.jpg","count":2},
                 ]
               }
-            ],
+            ],*/
             selects:[],
-            isCheckedAll:false
+            isCheckedAll:false,
           }
         },
+
       methods:{
+          ...mapActions(['addToCart']),
           check(obj){
             let idIndex = this.selects.indexOf(obj);
             console.log(idIndex);
@@ -157,7 +190,7 @@
             }
             console.log(this.selects)
           },
-         sltall(obj){
+          sltall(obj){
            obj.isCheckedAll = !obj.isCheckedAll;
            if(!obj.isCheckedAll){
              obj.goods.forEach(value=>{
@@ -176,6 +209,10 @@
            }
            console.log(this.selects)
          }
+      },
+
+      computed:{
+        ...mapGetters(['cart','cartList','totalPrice']),
       }
     }
 </script>
@@ -273,6 +310,7 @@
               border-radius: 5px;
             }
           }
+
           .right{
             width: 60%;
             box-sizing: border-box;
@@ -290,8 +328,12 @@
               font-size: 14px;
               color: gray;
               text-align: left;
-              width: 100%;
               height: 16px;
+              white-space: nowrap;
+              width: 100%;
+              overflow: hidden;
+              display: inline-block;
+              text-overflow: ellipsis;
             }
             .bottom{
               width: 100%;

@@ -1,5 +1,8 @@
 <template>
-  <div class="boxnavs" id="box">
+  <div>
+    <button @click="show=!show">点击</button>
+  <transition name="slide-fade">
+  <div class="boxnavs" id="box" v-show="show">
     <ul>
       <li v-for="item in boxnav">
         <span class="title">{{item.title}}</span>
@@ -8,6 +11,9 @@
       </li>
     </ul>
   </div>
+  </transition>
+  </div>
+
 </template>
 
 <script>
@@ -15,6 +21,7 @@
         name: "boxnav",
         data(){
           return{
+            show: true,
              boxnav:[
                {"title":"白条商城","des":"1元抢免息","img":"boxnav (1).jpg","colorA":"#000","colorB":"#fff"},
                {"title":"品牌秒杀","des":"低价抢大牌","img":"boxnav (2).jpg","colorA":"#000","colorB":"#fff"},
@@ -31,7 +38,17 @@
 </script>
 
 <style scoped lang="scss">
-
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
   #box{
     width: 100%;
     ul{

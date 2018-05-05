@@ -1,52 +1,51 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
-import footerMenu from '@/components/Index/footerMenu';
-import XnewGoods from '@/components/Index/XnewGoods';
-import boxnav from '@/components/Index/boxnav';
-import SearchBar from '@/components/Index/SearchBar';
-import searchbox from '@/components/Index/searchbox';
-import good from '@/components/Index/good';
-import goodsDetail from '@/components/goods/goodsDetail';
-import goodsSubDetail from '@/components/goods/goodsSubDetail';
-import cart from '@/components/cart/cart';
-
+import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
+import footerMenu from '@/components/Index/footerMenu'
+import XnewGoods from '@/components/Index/XnewGoods'
+import boxnav from '@/components/Index/boxnav'
+import SearchBar from '@/components/Index/SearchBar'
+import searchbox from '@/components/Index/searchbox'
+import good from '@/components/Index/good'
+import goodsDetail from '@/components/goods/goodsDetail'
+import goodsSubDetail from '@/components/goods/goodsSubDetail'
+import cart from '@/components/cart/cart'
 Vue.use(Router);
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'footerMenu',
-      component:footerMenu,
-      children:[
+      component: footerMenu,
+      children: [
         {
-          path:"/",
+          path: "/",
           component: HelloWorld
         },
         {
-          path:"/kind",
-          component:good
+          path: "/kind",
+          component: good
         },
         {
-          path:"/find",
+          path: "/find",
           component: XnewGoods
         },
         {
-          path:"/cart",
+          path: "/cart",
           component: cart
         },
         {
-          path:"/my",
+          path: "/my",
           component: boxnav
         }
-        ]
+      ]
     },
     {
       path: '/footer',
       component: footerMenu,
-      children:[
+      children: [
         {
-          path:"/index",
+          path: "/index",
           component: HelloWorld
         },
 
@@ -55,30 +54,30 @@ export default new Router({
     {
       path: '/search',
       component: SearchBar,
-      children:[
+      children: [
         {
-          path:'/',
+          path: '/',
           name: 'search',
-          component:searchbox
+          component: searchbox
         }
       ]
     },
     {
-      path:"/detail",
-      name:"detail",
-      component:goodsDetail,
-      children:[{
-        path:"/",
-        component:goodsSubDetail
+      path: "/detail",
+      name: "detail",
+      component: goodsDetail,
+      children: [{
+        path: "/",
+        component: goodsSubDetail
       },
         {
-          path:"/detail2",
-          name:"detail2",
-          component:searchbox
+          path: "/detail2",
+          name: "detail2",
+          component: searchbox
         },
         {
-          path:"/common",
-          component:searchbox
+          path: "/common",
+          component: searchbox
         }
       ]
     }
